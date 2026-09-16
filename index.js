@@ -1,17 +1,17 @@
 var allbuttons = document.querySelectorAll("button");
 var _div = document.querySelector("div");
+var currentbg = "";
 
 allbuttons.forEach((btns) => {
   btns.addEventListener("click", (e) => {
-    if (e.target.classList.contains("btn-danger")) {
-      e.target.parentNode.classList.remove("bg-primary", "bg-dark");
-      e.target.parentNode.classList.add("bg-danger");
-    } else if (e.target.classList.contains("btn-primary")) {
-      e.target.parentNode.classList.remove("bg-danger", "bg-dark");
-      e.target.parentNode.classList.add("bg-primary");
-    } else if (e.target.classList.contains("btn-dark")) {
-      e.target.parentNode.classList.remove("bg-danger", "bg-primary");
-      e.target.parentNode.classList.add("bg-dark");
+    if (currentbg) {
+      _div.classList.remove(currentbg);
     }
+
+    _div.classList.add(e.target.value);
+    currentbg = e.target.value;
+
+    /*_div.classList.replace(currentcolor, e.target.dataset.color);
+    currentcolor = e.target.dataset.color;*/
   });
 });
